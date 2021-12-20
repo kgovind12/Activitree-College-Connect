@@ -13,8 +13,8 @@ import { first } from 'rxjs/operators';
 })
 export class LoginComponent implements OnInit {
 
-  // email: string;
-  // password: string;
+  email: string;
+  password: string;
 
   constructor(
     private auth: AngularFireAuth,

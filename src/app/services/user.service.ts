@@ -23,11 +23,11 @@ export class UserService {
 
   getCurrentUser(firebaseUID: string): Observable<User> {
     // return this.collection.valueChanges();
-    return this.firestore.doc<User>(firebaseUID).valueChanges();
+    return this.usersCollection.doc<User>(firebaseUID).valueChanges();
   }
 
   set(user: User): void {
-    const doc = this.firestore.doc<User>(user.id);
+    const doc = this.usersCollection.doc<User>(user.id);
     delete user.id;
     doc.set(user);
   }
