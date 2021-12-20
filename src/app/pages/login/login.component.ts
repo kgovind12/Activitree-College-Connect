@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService } from 'src/app/services/user.service';
+import firebase from 'firebase/compat/app';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { first } from 'rxjs/operators';
 
 @Component({
   selector: 'app-login',
@@ -11,10 +17,10 @@ export class LoginComponent implements OnInit {
   // password: string;
 
   constructor(
-    // private fireAuth: AngularFireAuth,
-    // private service: UserService,
-    // private snackBar: MatSnackBar,
-    // private router: Router) { }
+    private auth: AngularFireAuth,
+    private service: UserService,
+    private snackBar: MatSnackBar,
+    private router: Router
   ) { }
 
   ngOnInit(): void {
@@ -25,7 +31,27 @@ export class LoginComponent implements OnInit {
   }
 
   loginWithGoogle(): void {
-    console.log("Loggin in with google");
+    this.loginWithProvider(new firebase.auth.GoogleAuthProvider());
+    // this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
+
+  loginWithProvider(provider: firebase.auth.AuthProvider): void {
+    this.login(fireAuth => fireAuth.signInWithPopup(provider));
+  }
+
+  login(signIn: (fireAuth: AngularFireAuth) => Promise<firebase.auth.UserCredential>): void {
+    signIn(this.auth).then(userCredential => 
+      this.service.getCurrentUser(userCredential.user.uid).pipe(first()).subscribe(user =>
+        this.router.navigate([user ? '/dashboard' : '/register/continue'])
+      )
+    ).catch(err =>
+      this.showMessage(err)
+    );
+  }
+
+  showMessage(message: string): void {
+    console.log("Showing snackbar error", message);
+    // this.snackBar.open(message, null, { duration: 3000 });
   }
 
   loginWithFacebook(): void {

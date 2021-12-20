@@ -1,4 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { UserService } from 'src/app/services/user.service';
+import { User } from '../../models/user';
+import firebase from 'firebase/compat/app';
+import { Observable } from 'rxjs';
+
 
 @Component({
   selector: 'app-dashboard',
@@ -7,9 +13,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DashboardComponent implements OnInit {
 
-  constructor() { }
+  // currentUser: User;
+  // user: User;
+  // firebaseUser: firebase.User;
+
+  constructor(public auth: AngularFireAuth, private userService: UserService) { }
 
   ngOnInit(): void {
+    // this.auth.user.subscribe(user => {
+    //   this.firebaseUser = user;
+    //   this.userService.getCurrentUser(user.uid).subscribe(user => this.user = user);
+    // });
   }
 
 }
