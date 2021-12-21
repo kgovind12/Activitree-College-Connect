@@ -5,6 +5,7 @@ import { UserService } from 'src/app/services/user.service';
 import firebase from 'firebase/compat/app';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { first } from 'rxjs/operators';
+import { FormControl, FormGroupDirective, NgForm, Validators, NgModel } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -15,6 +16,7 @@ export class LoginComponent implements OnInit {
 
   email: string;
   password: string;
+  emailFormControl = new FormControl('', [Validators.required, Validators.email]);
 
   constructor(
     private auth: AngularFireAuth,
@@ -57,8 +59,7 @@ export class LoginComponent implements OnInit {
   }
 
   showMessage(message: string): void {
-    console.log("Showing snackbar error", message);
-    // this.snackBar.open(message, null, { duration: 3000 });
+    this.snackBar.open(message, null, { duration: 4000 });
   }
 
 }

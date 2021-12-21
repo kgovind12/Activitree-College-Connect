@@ -11,7 +11,7 @@
                     <mat-form-field hideRequiredMarker>
                         <input #emailField="ngModel" matInput [(ngModel)]="email" placeholder="Email" type="text" required email>
                         <mat-icon matSuffix>email</mat-icon>
-                        <!-- <mat-error *ngIf="emailField.invalid && emailField.errors.email">Invalid Email Format</mat-error> -->
+                        <mat-error *ngIf="emailField.invalid">Invalid Email Format</mat-error>
                     </mat-form-field>
                     <mat-form-field hideRequiredMarker>
                         <input matInput [(ngModel)]="password" placeholder="Password" type="password" required>
