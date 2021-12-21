@@ -32,7 +32,10 @@ export class LoginComponent implements OnInit {
 
   loginWithGoogle(): void {
     this.loginWithProvider(new firebase.auth.GoogleAuthProvider());
-    // this.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
+
+  loginWithFacebook(): void {
+    this.loginWithProvider(new firebase.auth.FacebookAuthProvider());
   }
 
   loginWithProvider(provider: firebase.auth.AuthProvider): void {
@@ -52,10 +55,6 @@ export class LoginComponent implements OnInit {
   showMessage(message: string): void {
     console.log("Showing snackbar error", message);
     // this.snackBar.open(message, null, { duration: 3000 });
-  }
-
-  loginWithFacebook(): void {
-    console.log("Logging in with facebook");
   }
 
 }
