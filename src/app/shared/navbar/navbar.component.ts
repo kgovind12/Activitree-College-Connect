@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
   selector: 'app-navbar',
@@ -7,9 +9,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() { }
+  constructor(public auth: AngularFireAuth, private router: Router, private route: ActivatedRoute) { }
 
   ngOnInit(): void {
+  }
+
+  logout() {
+    this.auth.signOut();
   }
 
 }

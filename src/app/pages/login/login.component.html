@@ -9,12 +9,12 @@
             <div fxLayout="column" fxLayoutAlign="stretch">
                 <div fxLayout="column">
                     <mat-form-field hideRequiredMarker>
-                        <input matInput placeholder="Email" type="text" required email>
+                        <input #emailField="ngModel" matInput [(ngModel)]="email" placeholder="Email" type="text" required email>
                         <mat-icon matSuffix>email</mat-icon>
-                        <!-- <mat-error *ngIf="emailField.invalid && emailField.errors.email">Invalid Email Format</mat-error> -->
+                        <mat-error *ngIf="emailField.invalid">Invalid Email Format</mat-error>
                     </mat-form-field>
                     <mat-form-field hideRequiredMarker>
-                        <input matInput placeholder="Password" type="password" required>
+                        <input matInput [(ngModel)]="password" placeholder="Password" type="password" required>
                         <mat-icon matSuffix>vpn_key</mat-icon>
                     </mat-form-field>
                     <mat-checkbox color="primary">Keep me signed in</mat-checkbox>
