@@ -7,7 +7,7 @@ Project ownership is shared with the Activitree Student Organization at UC Davis
 - UI components are made with Angular Material.
 - Layout is made with Angular Flex-Layout.
 - Database for this project is Cloud Firestore.
-- This project is deployed on Firebase.
+- Deployed on Firebase.
 
 ## Development server
 
