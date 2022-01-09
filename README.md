@@ -1,6 +1,10 @@
 # ActivitreeConnect
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+A web application to bridge the gap between high school and college through peer mentoring. Sign up as a mentor or a mentee to get started, and search for mentors/mentees on the 'Mentoring' tab.
+ 
+- This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.1.2.
+- UI components are made with Angular Material.
+- Layout is made with Angular Flex-Layout.
 
 ## Development server
 
